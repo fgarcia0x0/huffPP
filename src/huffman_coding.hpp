@@ -223,12 +223,20 @@ namespace huffmanPP::detail
 
 namespace huffmanPP
 {
+	#ifndef HUFF_CONSTINIT
+		#ifdef __cpp_constinit
+			#define HUFF_CONSTINIT constinit
+		#else
+			#define HUFF_CONSTINIT constexpr inline
+		#endif
+	#endif
+
 	/**
 	 * @brief signature of our compression method, every file compressed will contain
 	 * in their early bytes the signature "Huff" so that we can only evaluate
 	 * The compressed files with our compression algorithm.
 	 */
-	constinit auto HuffmanSignature{ detail::FourCC("HUFF") };
+	HUFF_CONSTINIT auto HuffmanSignature{ detail::FourCC("HUFF") };
 
 	template <typename CharType = std::uint8_t>
 	struct HuffmanTreeNode
