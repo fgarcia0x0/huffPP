@@ -23,10 +23,16 @@ jobs:
           LINKER: clang++
         
         - os: ubuntu-latest
-          COMPILER: g++
-          LINKER: g++
+          COMPILER: g++-11
+          LINKER: g++-11
+        - run:  |
+               sudo apt update
+               sudo apt install gcc-10 g++-10
+          shell: bash
+  
 
     steps:
+    
     - uses: actions/checkout@v2
     - run: echo ${{matrix.TARGET}}
 
