@@ -6,7 +6,7 @@ The huffPP (Huffman Coding Plus Plus) is a utility tool written in C++ 20 to com
 - cmake
 - ninja
 
-## How to Compile?
+## How to Compile
 **Enter in your terminal:**
 
 ```sh
