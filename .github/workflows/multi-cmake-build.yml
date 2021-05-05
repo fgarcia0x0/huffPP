@@ -27,7 +27,7 @@ jobs:
           LINKER: g++-11
         - run:  |
                sudo apt update
-               sudo apt install gcc-10 g++-10
+               sudo apt install gcc-11 g++-11
           shell: bash
   
 
