@@ -25,14 +25,17 @@ jobs:
         - os: ubuntu-latest
           COMPILER: g++-11
           LINKER: g++-11
-        - run:  |
-               sudo apt update
-               sudo apt install gcc-11 g++-11
-          shell: bash
-  
 
     steps:
     
+    - name: Setup dependencies
+      if: startsWith(matrix.os, 'ubuntu')
+      run: |
+          sudo apt-get install gcc-11 g++-11
+      env:
+       CC:   gcc-11
+       CXX:  g++-11
+
     - uses: actions/checkout@v2
     - run: echo ${{matrix.TARGET}}
 
