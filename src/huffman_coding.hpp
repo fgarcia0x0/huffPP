@@ -229,7 +229,7 @@ namespace huffmanPP
 	 * in their early bytes the signature "Huff" so that we can only evaluate
 	 * The compressed files with our compression algorithm.
 	 */
-	constexpr inline auto HuffmanSignature{ detail::FourCC("HUFF") };
+	constinit auto HuffmanSignature{ detail::FourCC("HUFF") };
 
 	template <typename CharType = std::uint8_t>
 	struct HuffmanTreeNode

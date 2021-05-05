@@ -7,7 +7,7 @@ if (WIN32)
 endif()
 
 # set the project name
-project(huffPP VERSION 0.0.1)
+project(huffPP VERSION 0.0.2)
 
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Debug)
@@ -51,7 +51,7 @@ if (CMAKE_COMPILER_IS_MSVC)
 elseif (CMAKE_COMPILER_IS_GCC)
 	message(STATUS "Generating GCC Additional Arguments")
 
-	add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-parameter -Wno-unused-function -Wdouble-promotion -Wformat-overflow -Wformat-security -Wnull-dereference -Wmisleading-indentation -Wconversion -Wshadow -funsafe-loop-optimizations -Wunsafe-loop-optimizations -Wcast-qual -Wcast-align -Waddress -D__USE_MINGW_ANSI_STDIO=1)
+	add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-parameter -Wno-unused-function -Wdouble-promotion -Wformat-overflow -Wformat-security -Wnull-dereference -Wmisleading-indentation -Wconversion -Wshadow -Wcast-qual -Wcast-align -Waddress -D__USE_MINGW_ANSI_STDIO=1)
 	
 	if (${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL 10.0)
 
@@ -70,18 +70,8 @@ endif()
 
 file(GLOB_RECURSE HUFFPP_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/huffman_test.cpp")
 
-find_package(OpenMP)
-
 # add the executable
 add_executable(huffpp ${HUFFPP_SOURCES})
-
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
-target_link_libraries(huffpp PRIVATE Threads::Threads)
-
-if(OpenMP_CXX_FOUND)
-    target_link_libraries(huffpp PUBLIC OpenMP::OpenMP_CXX)
-endif()
 
 # set c++ version
 set_target_properties(huffpp PROPERTIES
