@@ -3,8 +3,8 @@ The huffPP (Huffman Coding Plus Plus) is a utility tool written in C++ 20 to com
 
 ## System Requirements
 - compiler that support at least C++ 20
-- cmake
-- ninja
+- [cmake](https://cmake.org/download/)
+- [ninja](https://github.com/ninja-build/ninja/releases)
 
 ## How to Compile
 **Enter in your terminal:**
